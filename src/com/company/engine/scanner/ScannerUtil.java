@@ -58,7 +58,7 @@ public class ScannerUtil {
         return shipList;
     }
 
-    private Integer getValueBoardFromUser() {
+    public static Integer getValueBoardFromUser() {
         Integer tempValue = null;
         do {
             try {
@@ -71,6 +71,21 @@ public class ScannerUtil {
         } while (tempValue == null);
         return tempValue;
     }
+
+    public static Integer getShotFromUser(int max) {
+        Integer tempValue = null;
+        do {
+            try {
+                Scanner scanner = new Scanner(System.in);
+                tempValue = ScannerValidation.validateShot(scanner.nextInt(), max);
+
+            } catch (InputMismatchException | IllegalArgumentException exception) {
+                System.out.println("Wprowadziłeś nieprawidoła wartość, spróbuj jeszcze raz");
+            }
+        } while (tempValue == null);
+        return tempValue;
+    }
+
 
 
 }

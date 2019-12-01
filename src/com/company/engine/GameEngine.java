@@ -1,5 +1,6 @@
 package com.company.engine;
 
+import com.company.engine.scanner.ScannerUtil;
 import com.company.engine.ship.Ship;
 import com.company.engine.ui.BoardUI;
 
@@ -38,28 +39,41 @@ class GameEngine {
         board.getPointList()
                 .stream()
                 .filter(point -> point.getX() == x && point.getY() == y).collect(Collectors.toList())
-                .get(0).shot();
+                .get(0)
+                .shot();
 
     }
 
     private void play() {
         boardUi.show(board);
-
+        int max = board.getPointList().stream().map(Point::getY).mapToInt(Integer::intValue).max().getAsInt();
         do {
-            //dodac ograniczenie do pol
-            Scanner scanner = new Scanner(System.in);
-            int x = scanner.nextInt();
-            int y = scanner.nextInt();
+            int x = ScannerUtil.getShotFromUser(max);
+            int y = ScannerUtil.getShotFromUser(max);
 
-            shot(x, y);
-            addToResult(getShotedItem(x, y));
-            boardUi.show(board);
-            boardUi.showStats(listShips);
+            if (isPointShoted(x, y)) {
+                System.out.println("Punkt by juz ustrzelony");
+            } else {
+                shot(x, y);
+                addToResult(getShotedItem(x, y));
+                boardUi.show(board);
+                boardUi.showStats(listShips);
+            }
+
             shotCounter++;
 
         } while (!listShips.stream().allMatch(Ship::isSuccess));
 
         System.out.println("Aby wygrać potrzebowałeś: " + shotCounter);
+    }
+
+    private boolean isPointShoted(int x, int y) {
+       return board.getPointList()
+                .stream()
+                .filter(point -> point.getX() == x && point.getY() == y)
+                .findFirst()
+                .get()
+                .isShoted();
     }
 
     private void addToResult(PointShip shotedItem) {
@@ -69,11 +83,11 @@ class GameEngine {
     }
 
     private PointShip getShotedItem(int x, int y) {
-        // dodac sprawdzenie czy byl juz klikniety item
         return board.getPointList()
                 .stream()
                 .filter(point -> point.getX() == x && point.getY() == y).collect(Collectors.toList())
-                .get(0).getPointShip();
+                .get(0)
+                .getPointShip();
     }
 
 }

@@ -30,6 +30,10 @@ public class Point {
         return y;
     }
 
+    public boolean isShoted() {
+        return isShoted;
+    }
+
     public String getDescription() {
         return isShoted ? pointShip == null ? ShipStatus.MISSED.toString() : ShipStatus.HIT.toString()
                 : ShipStatus.UNDISCOVERED.toString();
@@ -38,5 +42,7 @@ public class Point {
     void shot(){
         isShoted = true;
     }
+
+
 
 }

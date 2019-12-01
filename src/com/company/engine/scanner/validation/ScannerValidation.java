@@ -11,4 +11,16 @@ public class ScannerValidation {
             throw new IllegalArgumentException();
         }
     }
+
+    public static Integer validateShot(int value, int max) {
+        if (isCorrectShotSizeValue(value, max)) {
+            return value;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static boolean isCorrectShotSizeValue(int value, int max) {
+        return 0 <= value && value <= max;
+    }
 }
