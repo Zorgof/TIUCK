@@ -9,11 +9,11 @@ public class ShipFactory {
 
         switch (shipNumber) {
             case 0:
-                return new ShipOne("ShipOne", 1);
+                return new ShipOne();
             case 1:
-                return new ShipTwo("ShipTwo", 2);
+                return new ShipTwo();
             case 2:
-                return new ShipThree("ShipThree", 3);
+                return new ShipThree();
             default:
                 throw new IllegalArgumentException(" Unknown number");
         }

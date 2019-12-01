@@ -1,4 +1,4 @@
-package com.company.resources;
+package com.company.engine.resources;
 
 public final class Configuration {
 

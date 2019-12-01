@@ -3,8 +3,8 @@ package com.company.engine;
 
 public class Point {
 
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
     private PointShip pointShip = null;
     private boolean isShoted = false;
 
@@ -14,11 +14,11 @@ public class Point {
         this.y = y;
     }
 
-    public PointShip getPointShip() {
+    PointShip getPointShip() {
         return pointShip;
     }
 
-    public void setPointShip(PointShip pointShip) {
+    void setPointShip(PointShip pointShip) {
         this.pointShip = pointShip;
     }
 
@@ -30,11 +30,15 @@ public class Point {
         return y;
     }
 
-    public boolean isShoted() {
+    boolean isShoted() {
         return isShoted;
     }
 
     public String getDescription() {
+        return generateDescription();
+    }
+
+    private String generateDescription() {
         return isShoted ? pointShip == null ? ShipStatus.MISSED.toString() : ShipStatus.HIT.toString()
                 : ShipStatus.UNDISCOVERED.toString();
     }
@@ -42,7 +46,5 @@ public class Point {
     void shot(){
         isShoted = true;
     }
-
-
 
 }

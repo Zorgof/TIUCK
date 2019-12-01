@@ -9,8 +9,7 @@ import java.util.*;
 
 public class ScannerUtil {
 
-    private ShipFactory factory = new ShipFactory();
-
+    private final ShipFactory factory = new ShipFactory();
 
     public Board createBoard() {
         System.out.println("Statki");
@@ -58,7 +57,7 @@ public class ScannerUtil {
         return shipList;
     }
 
-    public static Integer getValueBoardFromUser() {
+    private static Integer getValueBoardFromUser() {
         Integer tempValue = null;
         do {
             try {

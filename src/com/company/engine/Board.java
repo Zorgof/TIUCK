@@ -5,11 +5,13 @@ import java.util.List;
 
 public class Board {
 
-    private List<Point> pointList = new ArrayList<>();
+    private final List<Point> pointList = new ArrayList<>();
+    private final int boardSize;
 
-    public Board(int size) {
-        for (int x = 0; x < size; x++) {
-            for (int y = 0; y < size; y++) {
+    public Board(int boardSize) {
+        this.boardSize = boardSize;
+        for (int y = 0; y < boardSize; y++) {
+            for (int x = 0; x < boardSize; x++) {
                 pointList.add(new Point(x,y));
             }
         }
@@ -19,5 +21,7 @@ public class Board {
         return pointList;
     }
 
-
+    public int getBoardSize() {
+        return boardSize;
+    }
 }

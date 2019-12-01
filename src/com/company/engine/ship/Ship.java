@@ -5,32 +5,24 @@ import java.util.List;
 
 public abstract class Ship {
 
-    private int lenght;
-    private List<Integer> shortPoints = new ArrayList<>();
-    private String description;
+    private final int length;
+    private final List<Integer> shortPoints = new ArrayList<>();
+    private final String description;
 
     Ship(String description, int length) {
         this.description = description;
-        this.lenght = length;
+        this.length = length;
 
         for (int i = 0; i < length; i++) {
             shortPoints.add(0);
         }
     }
 
-    public int getLenght() {
-        return lenght;
-    }
-
     public List<Integer> getShortPoints() {
         return shortPoints;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public boolean isSuccess(){
+    public boolean isDestroyed(){
         return shortPoints.stream().allMatch(item -> item.equals(1));
     }
 
@@ -38,7 +30,7 @@ public abstract class Ship {
     public String toString() {
         return description +"{" +
                 ", shortPoints=" + shortPoints +
-                ", lenght=" + lenght +
+                ", length=" + length +
                 '}';
     }
 }

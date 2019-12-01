@@ -8,13 +8,8 @@ public enum  ShipStatus {
 
     private final String name;
 
-    private ShipStatus(String name) {
+    ShipStatus(String name) {
         this.name = name;
-    }
-
-    public boolean equalsName(String otherName) {
-        // (otherName == null) check is not needed because name.equals(null) returns false
-        return name.equals(otherName);
     }
 
     public String toString() {
