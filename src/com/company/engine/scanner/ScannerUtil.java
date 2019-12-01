@@ -19,7 +19,7 @@ public class ScannerUtil {
     }
 
     public List<Ship> getUserShipsList() {
-        System.out.println("Wybierz statki do gry");
+        System.out.println("Dostepne statki do gry");
         System.out.println("0). Tankowiec");
         System.out.println("1). Krążownik");
         System.out.println("2). Żaglówka");
