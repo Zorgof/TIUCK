@@ -53,7 +53,7 @@ class GameEngine {
     }
 
     void play() {
-        boardUi.show(board);
+        System.out.println("Stzelaj podaj x i y");
         do {
             int x = ScannerUtil.getShotFromUser(board.getBoardSize());
             int y = ScannerUtil.getShotFromUser(board.getBoardSize());
